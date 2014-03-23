@@ -22,7 +22,7 @@ def updateMove(moves):
     global turn, numPlays
     sign = "X"
    
-    if checkFull():
+    if(checkFull() == True):
         print("Game ends in a tie")
         return(True)
         
@@ -40,7 +40,7 @@ def updateMove(moves):
     else:
         print("That space has already been played")
         
-    if checkVictory() == True:
+    if(checkVictory() == True):
         print("Congratulations Player " + str(player) + " on your victory")
         return(True)
     
@@ -62,13 +62,13 @@ def read():
 def checkVictory():
     for y in range(len(table)):
         for x in range(len(table)):
-            if table[y][x] == table[y][0] and table[y][x] == table[y][1] and table[y][x] == table[y][2]:    #check horizontally for victory
+            if table[y][x] == table[y][0] and table[y][x] == table[y][1] and table[y][x] == table[y][2] and table[y][x] != "*":    #check horizontally for victory
                 return(True)
-            elif table[y][x] == table[0][0] and table[y][x] == table[1][1] and table[y][x] == table[2][2]:  #check left-right diagonaly for victory
+            elif table[y][x] == table[0][0] and table[y][x] == table[1][1] and table[y][x] == table[2][2] and table[y][x] != "*":  #check left-right diagonaly for victory
                 return(True)
-            elif table[y][x] == table[0][2] and table[y][x] == table[1][1] and table[y][x] == table[2][0]:  #check right-left diagonally for victory
+            elif table[y][x] == table[0][2] and table[y][x] == table[1][1] and table[y][x] == table[2][0] and table[y][x] != "*":  #check right-left diagonally for victory
                 return(True)
-            elif table[y][x] == table[0][x] and table[y][x] == table[1][x] and table[y][x] == table[2][x]:  #check vertically for victory
+            elif table[y][x] == table[0][x] and table[y][x] == table[1][x] and table[y][x] == table[2][x] and table[y][x] != "*":  #check vertically for victory
                 return(True)
             else:
                 return(False)         
